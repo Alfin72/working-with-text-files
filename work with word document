@@ -1,0 +1,22 @@
+import docx
+import os
+
+location = 'D:\Test'
+os.chdir(location)
+file_list=[]
+
+for (dirpath, dirnames, filenames) in os.walk(location):
+    for filename in filenames:
+        if 'docx' in str(filename):
+            file_list.append(filename)
+
+for name in file_list:
+    doc = docx.Document(name)
+    text = [p.text for p in doc.paragraphs]
+
+
+    for theline in text:
+        if 'Name' in theline:
+            print(theline)
+        elif 'age' in theline:
+            print(theline)
